@@ -1,0 +1,284 @@
+@import "tailwindcss";
+
+/* Theme, content globs, and plugins are declared in tailwind.config.ts. */
+@config "../tailwind.config.ts";
+
+/* Cairo — self-hosted (public/fonts) */
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("/fonts/Cairo-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 252 34% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 252 34% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 252 34% 14%;
+
+    /* brand purple #45207A */
+    --primary: 265 58% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    /* brand amber #E09A1E */
+    --secondary: 38 76% 50%;
+    --secondary-foreground: 268 63% 12%;
+
+    --muted: 40 33% 95%;
+    --muted-foreground: 252 10% 42%;
+
+    --accent: 270 45% 96%;
+    --accent-foreground: 265 58% 30%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 36 22% 88%;
+    --input: 36 22% 88%;
+    --ring: 265 58% 30%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 265 58% 30%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 265 58% 30%;
+  }
+
+  .dark {
+    --background: 268 63% 12%;
+    --foreground: 0 0% 98%;
+    --card: 268 63% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 268 63% 12%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 38 76% 50%;
+    --primary-foreground: 268 63% 12%;
+    --secondary: 268 40% 20%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 268 40% 20%;
+    --muted-foreground: 268 15% 70%;
+    --accent: 268 40% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 268 40% 20%;
+    --input: 268 40% 20%;
+    --ring: 38 76% 50%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: #e09a1e;
+    color: #1a0b30;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+}
+
+/* ---------- Khryman site effects ---------- */
+
+/* reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* hero slideshow — slow zoom on the active slide */
+@keyframes kh-kenburns {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.14);
+  }
+}
+.kh-kenburns {
+  animation: kh-kenburns 9s ease-out forwards;
+}
+
+/* slide progress bar */
+@keyframes kh-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.kh-progress {
+  transform-origin: left center;
+  animation: kh-progress linear forwards;
+}
+[dir="rtl"] .kh-progress {
+  transform-origin: right center;
+}
+
+/* sector marquee */
+@keyframes kh-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.kh-marquee {
+  animation: kh-marquee 45s linear infinite;
+}
+.kh-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* panel swap (sector explorer) */
+@keyframes kh-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.kh-fade-up {
+  animation: kh-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* hero overlay follows reading direction */
+.kh-hero-overlay {
+  background:
+    linear-gradient(to top, rgba(26, 11, 48, 0.85) 0%, rgba(26, 11, 48, 0) 38%),
+    linear-gradient(to right, rgba(26, 11, 48, 0.92) 0%, rgba(26, 11, 48, 0.62) 45%, rgba(26, 11, 48, 0.15) 100%);
+}
+[dir="rtl"] .kh-hero-overlay {
+  background:
+    linear-gradient(to top, rgba(26, 11, 48, 0.85) 0%, rgba(26, 11, 48, 0) 38%),
+    linear-gradient(to left, rgba(26, 11, 48, 0.92) 0%, rgba(26, 11, 48, 0.62) 45%, rgba(26, 11, 48, 0.15) 100%);
+}
+
+/* subtle dotted texture for dark sections */
+.kh-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.kh-no-scrollbar {
+  scrollbar-width: none;
+}
+.kh-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .kh-kenburns,
+  .kh-marquee,
+  .kh-fade-up {
+    animation: none;
+  }
+}

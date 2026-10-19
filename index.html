@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>كهرمان العالمية | Khryman International</title>
+    <meta
+      name="description"
+      content="شركة كهرمان العالمية المحدودة — مجموعة سودانية متعددة الأنشطة منذ 2017: الذهب والتعدين، الزراعة، الإنتاج الحيواني، الطاقة الشمسية، الأجهزة الكهربائية، الإنشاءات، التصنيع، والاستيراد والتصدير."
+    />
+    <meta name="theme-color" content="#45207A" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/fonts/Cairo-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/Cairo-Bold.ttf" as="font" type="font/ttf" crossorigin />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Khryman International | كهرمان العالمية" />
+    <meta property="og:title" content="كهرمان العالمية | Khryman International" />
+    <meta
+      property="og:description"
+      content="مجموعة سودانية متعددة الأنشطة منذ 2017 — A Sudanese multi-sector group since 2017."
+    />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:locale" content="ar_SD" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <script>
+      // Apply the saved language before React loads to avoid a flash of the wrong direction.
+      (function () {
+        try {
+          var param = new URLSearchParams(location.search).get("lang");
+          var lang = param === "en" || param === "ar" ? param : localStorage.getItem("khryman-lang");
+          if (lang === "en") {
+            document.documentElement.lang = "en";
+            document.documentElement.dir = "ltr";
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="module" src="/client/App.tsx"></script>
+  </body>
+</html>
