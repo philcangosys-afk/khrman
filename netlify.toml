@@ -12,3 +12,9 @@ force = true
 from = "/api/*"
 status = 200
 to = "/.netlify/functions/api/:splat"
+
+# React Router (SPA): serve index.html for every page route
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
