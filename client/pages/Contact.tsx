@@ -236,7 +236,7 @@ export default function Contact() {
               </InfoCard>
             </Reveal>
             <Reveal delay={160}>
-              <InfoCard icon="mail" title={t({ ar: "البريد الإلكتروني", en: "Email" })}>
+              <InfoCard icon="mail" title={t({ ar: "البريد الإلكتروني للاستفسارات", en: "Inquiries email" })}>
                 <a href={`mailto:${contact.email}`} className="break-all hover:text-gold-600" dir="ltr">
                   {contact.email}
                 </a>

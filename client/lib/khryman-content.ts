@@ -17,7 +17,7 @@ export const contact = {
     en: "Al-Arda Street, East of Wad Al-Bashir Bridge, Omdurman, Sudan",
   } as L,
   phones: ["0912325729", "0912292615", "0912545931"],
-  email: "tarig.ogal@gmail.com",
+  email: "info@khryman.com",
   /** WhatsApp number in international format (Sudan +249). */
   whatsapp: "249912325729",
   mapQuery: "Wad Al Bashir Bridge, Omdurman, Sudan",
